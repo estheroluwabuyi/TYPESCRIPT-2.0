@@ -45,3 +45,30 @@ const sumAll = (a = 10, b, c = 2) => {
 };
 logMsg(sumAll(undefined, 3));
 //Rest Parameters
+const total = (a, ...nums) => {
+    return a + nums.reduce((prev, curr) => prev + curr);
+};
+logMsg(total(1, 2, 3));
+//The never type
+const createError = (errMsg) => {
+    throw new Error(errMsg);
+};
+const infinite = () => {
+    let i = 1;
+    while (true) {
+        i++;
+        if (i > 100)
+            break;
+    }
+};
+const isNumber = (value) => {
+    return typeof value === "number" ? true : false;
+};
+const numberOrString = (value) => {
+    if (typeof value === "string")
+        return "string";
+    if (isNumber(value))
+        return "number";
+    return createError("This should never happen");
+    //we wont get error anymore bcos we are returning a never type
+};

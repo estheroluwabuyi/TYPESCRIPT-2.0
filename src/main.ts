@@ -205,3 +205,33 @@ const sumAll = (a: number = 10, b: number, c: number = 2): number => {
 logMsg(sumAll(undefined, 3));
 
 //Rest Parameters
+const total = (a: number, ...nums: number[]): number => {
+  return a + nums.reduce((prev, curr) => prev + curr);
+};
+logMsg(total(1, 2, 3));
+
+//The never type
+const createError = (errMsg: string) => {
+  throw new Error(errMsg);
+};
+
+const infinite = () => {
+  let i: number = 1;
+  while (true) {
+    i++;
+
+    if (i > 100) break;
+  }
+};
+
+const isNumber = (value: any): boolean => {
+  return typeof value === "number" ? true : false;
+};
+
+const numberOrString = (value: number | string): string => {
+  if (typeof value === "string") return "string";
+  if (isNumber(value)) return "number";
+
+  return createError("This should never happen");
+  //we wont get error anymore bcos we are returning a never type
+};
