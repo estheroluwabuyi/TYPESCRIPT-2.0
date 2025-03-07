@@ -1,74 +1,28 @@
 "use strict";
-// // // let username = "Esther";
-// // // console.log(username);
-// interface PostId = stringOrNumber //wont work!
-//Literal Types
-let myName;
-myName = "Esther";
-let userName;
-userName = "Dave";
-// FUNCTIONS
-const add = (a, b) => {
-    return a + b;
+// // // // let username = "Esther";
+// // // // console.log(username);
+//with as keyword
+let a = "hello";
+let b = a; //assignment to a less specific type
+let c = a; //assignment to a more specific type
+//with angle brackets
+let d = "world"; // "world" as a string (One)g
+// let d = "world" as One;
+let e = "world"; // let e = "world" as Two;
+const addOrConcat = (a, b, c) => {
+    if (c === "add")
+        return a + b;
+    return "" + a + b;
 };
-const logMsg = (message) => {
-    console.log(message);
-};
-logMsg("Hello!");
-logMsg(add(2, 3));
-let subtract = function (c, d) {
-    return c - d;
-};
-// interface mathFunction {
-//   (a: number, b: number): number;
-// }
-let multiply = function (c, d) {
-    return c * d;
-};
-logMsg(multiply(2, 2));
-console.log(multiply(3, 5));
-//optional parameters
-const addAll = (a, b, c) => {
-    if (typeof c !== "undefined")
-        return a + b + c;
-    return a + b;
-};
-//default param values
-// const sumAll = (a: number, b: number, c: number = 2): number => {
-//   return a + b + c;
-// };
-// logMsg(addAll(2, 3, 2));
-// logMsg(addAll(2, 3));
-// logMsg(sumAll(2, 3));
-const sumAll = (a = 10, b, c = 2) => {
-    return a + b + c;
-};
-logMsg(sumAll(undefined, 3));
-//Rest Parameters
-const total = (a, ...nums) => {
-    return a + nums.reduce((prev, curr) => prev + curr);
-};
-logMsg(total(1, 2, 3));
-//The never type
-const createError = (errMsg) => {
-    throw new Error(errMsg);
-};
-const infinite = () => {
-    let i = 1;
-    while (true) {
-        i++;
-        if (i > 100)
-            break;
-    }
-};
-const isNumber = (value) => {
-    return typeof value === "number" ? true : false;
-};
-const numberOrString = (value) => {
-    if (typeof value === "string")
-        return "string";
-    if (isNumber(value))
-        return "number";
-    return createError("This should never happen");
-    //we wont get error anymore bcos we are returning a never type
-};
+let myVal = addOrConcat(2, 2, "concat");
+let nextVal = addOrConcat(2, 2, "concat"); //even tho this is not true, TS is believing us that this would return a number
+//unknown type: like any unless you cant use unknown anywhere unless youre doing force or double casting
+// 10 as string
+//force casting
+10;
+//assertions with DOM
+const img = document.querySelector("img"); //this does nit throe any more error because we're literally selecting an img element and not just forcing src on an HTMLElement thats not an img
+const myImg = document.getElementById("img");
+const nextImg = document.getElementById("img");
+img.src; // TS now has no problem with us accessing
+myImg.src;
