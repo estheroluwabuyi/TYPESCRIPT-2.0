@@ -271,9 +271,62 @@ let nextVal: number = addOrConcat(2, 2, "concat") as number; //even tho this is 
 10 as unknown as string;
 
 //assertions with DOM
-const img = document.querySelector("img")!; //this does nit throe any more error because we're literally selecting an img element and not just forcing src on an HTMLElement thats not an img
-const myImg = document.getElementById("img") as HTMLImageElement;
-const nextImg = <HTMLImageElement>document.getElementById("img");
+// const img = document.querySelector("img")!; //this does nit throe any more error because we're literally selecting an img element and not just forcing src on an HTMLElement thats not an img
+// const myImg = document.getElementById("img") as HTMLImageElement;
+// const nextImg = <HTMLImageElement>document.getElementById("img");
 
-img.src; // TS now has no problem with us accessing
-myImg.src;
+// img.src; // TS now has no problem with us accessing
+// myImg.src;
+
+// TYPESCRIPT CLASSES
+class Coder {
+  secondLang!: string; //you wont get an error for not calling yet
+
+  constructor(
+    public readonly name: string,
+    public music: string,
+    private age: number,
+    protected lang: string = "Typescript"
+  ) {
+    this.name = name;
+    this.music = music;
+    this.age = age;
+    this.lang = lang;
+  }
+
+  public getAge() {
+    return `Hello, I'm ${this.age}`;
+  }
+}
+
+const Esther = new Coder("Esther", "Pop", 25);
+console.log(Esther);
+
+Esther.music = "Jazz";
+console.log(Esther);
+
+console.log(Esther.getAge());
+// console.log(Esther.age); //works in js becos theres nothing like or anything
+// console.log(Esther.lang);
+
+class WebDev extends Coder {
+  constructor(
+    public computer: string,
+    name: string,
+    music: string,
+    age: number
+  ) {
+    super(name, music, age);
+    this.computer;
+  }
+
+  public getLang() {
+    return `I write ${this.lang}`;
+  }
+}
+
+const Kara = new WebDev("Mac", "Kara", "Hip Pop", 23);
+console.log(Kara.getLang());
+console.log(Kara.getAge());
+// console.log(Kara.age);
+// console.log(Kara.lang); //only accessible WITHIN the classes and subclasses

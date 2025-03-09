@@ -13,7 +13,7 @@
 //   year.setAttribute("datetime", thisYear); //setAttribute: datetime = 2025
 //   year.textContent = thisYear;
 // }
-//2ND variation
+// 2ND variation
 const year = document.getElementById("year");
 const thisYear = new Date().getFullYear().toString();
 year.setAttribute("datetime", thisYear);

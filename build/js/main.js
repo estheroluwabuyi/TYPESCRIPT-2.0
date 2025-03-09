@@ -21,8 +21,46 @@ let nextVal = addOrConcat(2, 2, "concat"); //even tho this is not true, TS is be
 //force casting
 10;
 //assertions with DOM
-const img = document.querySelector("img"); //this does nit throe any more error because we're literally selecting an img element and not just forcing src on an HTMLElement thats not an img
-const myImg = document.getElementById("img");
-const nextImg = document.getElementById("img");
-img.src; // TS now has no problem with us accessing
-myImg.src;
+// const img = document.querySelector("img")!; //this does nit throe any more error because we're literally selecting an img element and not just forcing src on an HTMLElement thats not an img
+// const myImg = document.getElementById("img") as HTMLImageElement;
+// const nextImg = <HTMLImageElement>document.getElementById("img");
+// img.src; // TS now has no problem with us accessing
+// myImg.src;
+// TYPESCRIPT CLASSES
+class Coder {
+    constructor(name, music, age, lang = "Typescript") {
+        this.name = name;
+        this.music = music;
+        this.age = age;
+        this.lang = lang;
+        this.name = name;
+        this.music = music;
+        this.age = age;
+        this.lang = lang;
+    }
+    getAge() {
+        return `Hello, I'm ${this.age}`;
+    }
+}
+const Esther = new Coder("Esther", "Pop", 25);
+console.log(Esther);
+Esther.music = "Jazz";
+console.log(Esther);
+console.log(Esther.getAge());
+// console.log(Esther.age); //works in js becos theres nothing like or anything
+// console.log(Esther.lang);
+class WebDev extends Coder {
+    constructor(computer, name, music, age) {
+        super(name, music, age);
+        this.computer = computer;
+        this.computer;
+    }
+    getLang() {
+        return `I write ${this.lang}`;
+    }
+}
+const Kara = new WebDev("Mac", "Kara", "Hip Pop", 23);
+console.log(Kara.getLang());
+console.log(Kara.getAge());
+// console.log(Kara.age);
+// console.log(Kara.lang); //only accessible WITHIN the classes and subclasses
