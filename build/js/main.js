@@ -62,5 +62,14 @@ class WebDev extends Coder {
 const Kara = new WebDev("Mac", "Kara", "Hip Pop", 23);
 console.log(Kara.getLang());
 console.log(Kara.getAge());
-// console.log(Kara.age);
-// console.log(Kara.lang); //only accessible WITHIN the classes and subclasses
+class Guitarist {
+    constructor(name, instrument) {
+        this.name = name;
+        this.instrument = instrument;
+    }
+    play(action) {
+        return `${this.name} ${action} the ${this.instrument}`;
+    }
+}
+const John = new Guitarist("John", "Guitar");
+console.log(John.play("strums"));

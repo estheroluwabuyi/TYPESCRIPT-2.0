@@ -330,3 +330,28 @@ console.log(Kara.getLang());
 console.log(Kara.getAge());
 // console.log(Kara.age);
 // console.log(Kara.lang); //only accessible WITHIN the classes and subclasses
+
+/////////////////////////////////
+//Applying interfaces to classes
+interface Musician {
+  name: string;
+  instrument: string;
+  play(action: string): string;
+}
+
+class Guitarist implements Musician {
+  name: string;
+  instrument: string;
+
+  constructor(name: string, instrument: string) {
+    this.name = name;
+    this.instrument = instrument;
+  }
+
+  play(action: string) {
+    return `${this.name} ${action} the ${this.instrument}`;
+  }
+}
+
+const John = new Guitarist("John", "Guitar");
+console.log(John.play("strums"));
