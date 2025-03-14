@@ -47,8 +47,8 @@ console.log(Esther);
 Esther.music = "Jazz";
 console.log(Esther);
 console.log(Esther.getAge());
-// console.log(Esther.age); //works in js becos theres nothing like or anything
-// console.log(Esther.lang);
+// console.log(Esther.age); //works in js
+// console.log(Esther.lang); //can be accessed only in classes and derived classes
 class WebDev extends Coder {
     constructor(computer, name, music, age) {
         super(name, music, age);
@@ -73,3 +73,43 @@ class Guitarist {
 }
 const John = new Guitarist("John", "Guitar");
 console.log(John.play("strums"));
+////////////////////////////////////////////////
+class Peeps {
+    static getCount() {
+        return Peeps.count;
+    }
+    constructor(name) {
+        this.name = name;
+        this.name = name;
+        this.id = ++Peeps.count;
+    }
+}
+Peeps.count = 0;
+const Jane = new Peeps("Jane");
+const Steve = new Peeps("John");
+const Amy = new Peeps("John");
+console.log(Peeps.count);
+console.log(Steve.id);
+console.log(Amy.id);
+//Setters and Getters
+class Bands {
+    constructor() {
+        this.dataState = [];
+    }
+    get data() {
+        return this.dataState; // leaving it like this makes the method readonly because theres no setter
+    }
+    set data(value) {
+        if (Array.isArray(value) && value.every((el) => typeof el === "string")) {
+            this.dataState = value;
+            return;
+        }
+        else
+            throw new Error("Param is not an array of strings");
+    }
+}
+const MyBands = new Bands();
+MyBands.data = ["Neil Young", "Led Zep"];
+console.log(MyBands.data);
+MyBands.data = [...MyBands.data, "ZZ Top"];
+console.log(MyBands.data);
