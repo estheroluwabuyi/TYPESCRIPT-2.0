@@ -485,7 +485,7 @@ logStudentKey(student, "GPA");
 // }
 
 type Streams = "salary" | "bonus" | "sidehustle";
-type Incomes = Record<Streams, number | string>;
+type Incomes = Record<Streams, number | string>; //record is an inbuilt keyword
 
 const monthlyIncomes: Incomes = {
   salary: 500,
